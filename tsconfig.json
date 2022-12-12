@@ -1,0 +1,31 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "module": "commonjs",
+    "sourceMap": true,
+    "outDir": "./build",
+    "rootDir": "./src",
+    "strict": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "noImplicitThis": true,
+    "moduleResolution": "node",
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "baseUrl": "./",
+    "plugins": [
+      {
+        "transform": "ts-nameof",
+        "type": "raw"
+      }
+    ],
+    "paths": {
+      "@src/*": ["src/*"],
+      "@utils/*": ["src/utils/*"],
+      "@infrastructure/*": ["src/infrastructure/*"]
+    },
+    "esModuleInterop": true
+  },
+  "exclude": ["./node_modules/**/*", "./docker/*", "./.vscode/*", "./build/**/*", "./coverage"]
+}

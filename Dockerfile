@@ -16,10 +16,6 @@ COPY . .
 
 RUN npm run build
 
-FROM build AS test
-RUN  npm run test
-RUN  npm run coverage
-
 FROM base as release
 ARG PROD_NODE_MODULES_PATH
 

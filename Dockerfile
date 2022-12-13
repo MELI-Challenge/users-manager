@@ -14,24 +14,15 @@ RUN npm install
 
 
 FROM dependencies as build
-#Splitting copy of source to ensure caching of npm_modules
 COPY --chown=node:node . .
-# download dev dependencies and perform build
 ENV NODE_ENV production
 RUN npm run build
 
 FROM build as release
 ARG PROD_NODE_MODULES_PATH
 
-# RUN addgroup -S -g 10001 appGrp \
-#     && adduser -S -D -u 10000 -s /sbin/nologin -h /home/node -G appGrp app
-# USER 10000
-
 COPY --chown=node:node --from=build /home/node/build .
 COPY --chown=node:node --from=build "${PROD_NODE_MODULES_PATH}" ./node_modules
-
-RUN ls -la
-RUN pwd
 
 EXPOSE 4100
 
